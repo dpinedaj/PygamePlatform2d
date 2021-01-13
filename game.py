@@ -74,9 +74,9 @@ class Game:
         for pos in level_data:
             for tile in level_data[pos]["tiles"]:
                 if tile["tile"] == "character.png":
-                    self.initial_position = pygame.Vector2(level_data[pos]["x"] *64, level_data[pos]["y"] *64)
+                    self.initial_position = pygame.Vector2(level_data[pos]["x"] *32, level_data[pos]["y"] *32)
                     continue
-                pos_vec = pygame.Vector2(level_data[pos]["x"] * 64, level_data[pos]["y"] * 64)
+                pos_vec = pygame.Vector2(level_data[pos]["x"] * 32, level_data[pos]["y"] * 32)
                 self.tiles_groups[tile["tile"]].add(OBJECT_REFERENCE[tile["tile"]](pos_vec,
                                                     self.tiles_images[tile["tile"]]))
 
