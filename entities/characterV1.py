@@ -1,4 +1,5 @@
-from .entity import *
+from entities.utils.entity2D import Entity2D
+import pygame
 from pygame.math import Vector2
 
 # FIXME FIX THE BLOCKS BEHAVIOR; STILL SLIDING FOR WRONG LIMITS
@@ -11,7 +12,7 @@ JUMP_SUB_IMAGES = 4
 FALL_SUB_IMAGES = 2
 
 
-class Character(Entity):
+class Character(Entity2D):
 
     def __init__(self, pos, images):
         super().__init__(pos, images)
@@ -35,6 +36,10 @@ class Character(Entity):
         self.jump_iter = 0
         self.fall_iter = 0
 
+        # Velocity
+        self.vy = 0
+        self.vx = 0
+        
         # States
         self.facing_right = True
         self.is_attack = False

@@ -25,7 +25,19 @@ def load_image(path, scale=0):
 
 def load_image_folder(path, scale=0):
     image_paths = [os.path.join(path, p) for p in sorted(os.listdir(path))]
-    images = {1: [load_image(p, scale) for p in image_paths]}
-    images[0] = [pygame.transform.flip(img, True, False)
-                 for img in images[1]]
+    images = [load_image(p, scale) for p in image_paths]
+    # images = {1: [load_image(p, scale) for p in image_paths]}
+    # images[0] = [pygame.transform.flip(img, True, False)
+    #              for img in images[1]]
     return images
+
+
+def draw_line_limit(canvas, rect, color=(255, 255, 255), ):
+    # TODO CHECKING RECT PROBLEMS
+    # side lines
+    pygame.draw.rect(canvas, color, (rect.right, rect.top, 1, rect.height), 0)
+    pygame.draw.rect(canvas, color, (rect.left, rect.top, 1, rect.height), 0)
+
+    # top and bottom lines
+    pygame.draw.rect(canvas, color, (rect.left, rect.top, rect.width, 1), 0)
+    pygame.draw.rect(canvas, color, (rect.left, rect.bottom, rect.width, 1), 0)
